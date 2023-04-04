@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "AdBlocker",
   "description": "AdBlocker in TypeScript!",
   "version": "1.0.0",
@@ -8,14 +8,16 @@
     "48": "icon.png",
     "128": "icon.png"
   },
-  "permissions": [
-    "webRequest",
-    "webRequestBlocking",
-    "<all_urls>",
-    ",*://*.googleservices.com/*','*://*.tpc.googlesyndication.com/*",
-    "*://*.googleservices.com/*','*://*.tpc.googlesyndication.com/*",
-    "*://*.g.doubleclick.net/*"
-  ],
+  "permissions": ["declarativeNetRequest"],
+  "declarativeNetRequest": {
+    "rule_resources" : [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
   "background": {
     "service_worker": "background.js"
   },
